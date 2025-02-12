@@ -18,12 +18,24 @@ const Home = () => {
                 <p className='date'> 📍[Event Location] || March 15, 2025 | 7:00PM</p>
             </div>
             <hr />
-            <div className='ticket-type'>
-                <p>Select Ticket Type:</p>
-                <div className='type'>
-                    <button className='regular'>REGULAR ACCESS 20left! <span>Free</span></button>
-                    <button className='vip'>VIP ACCESS 20left! <span>$50</span></button>
-                    <button className='vvip'>VVIP ACCESS 20left! <span>$150</span></button>
+            <div class="ticket-type">
+                <h3>Select Ticket Type:</h3>
+                <div class="ticket-options">
+                    <div class="ticket selected">
+                        <span class="ticket-type">REGULAR ACCESS</span>
+                        <span class="ticket-price free">Free</span>
+                        <span class="ticket-left">20 left!</span>
+                    </div>
+                    <div class="ticket">
+                        <span class="ticket-type">VIP ACCESS</span>
+                        <span class="ticket-price">$50</span>
+                        <span class="ticket-left">20 left!</span>
+                    </div>
+                    <div class="ticket">
+                        <span class="ticket-type">VVIP ACCESS</span>
+                        <span class="ticket-price">$150</span>
+                        <span class="ticket-left">20 left!</span>
+                    </div>
                 </div>
             </div>
             <div className='selection-container'>
@@ -36,7 +48,6 @@ const Home = () => {
                     <option value="5">5</option>
                 </select>
             </div>
-
             <div className='decision-container'>
                 <button className='cancel'>Cancel</button>
                 <button className='next'>Next</button>
