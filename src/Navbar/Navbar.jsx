@@ -18,7 +18,7 @@ const Navbar = () => {
             </ul>
         </nav>
         <div>
-            <button className='myticket-btn'>MY TICKETS <img src={arrow} alt='direction'/></button>
+            <button className='myticket-btn'>MY TICKETS <img src={arrow} alt='direction' className='arrow'/></button>
         </div>
     </header>
   )

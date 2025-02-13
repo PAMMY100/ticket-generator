@@ -1,58 +1,37 @@
+import { useContext, useEffect } from 'react'
+import Attendee from '../components/attendee/Attendee'
+import TicketSelection from '../components/selection/TicketSelection'
 import './Home.css'
+import { TickectContext } from '../context/TicketProvider';
+import Ticket from '../components/ticket/Ticket';
 
 const Home = () => {
+    const {page, setPage, formData, setFormData} = useContext(TickectContext);
+
+    let step = '';
+
+    useEffect(() => {
+        if (page === 2) {
+            step = 'two'
+        } else if (page === 3) {
+            step = 'three'
+        }
+    }, [page])
+    
+    
+
   return (
     <section className='ticket-container'>
         <div className='title-box'>
             <h1 className='title'>Ticket Selection</h1>
-            <p className='step'>step 1/3</p>
+            <p className='step'>step {page}/3</p>
         </div>
         <div className='progress-bar'>
-            <div className='progress'></div>
+            <div className={`progress ${step}`}></div>
         </div>
-        <div className='info-container'>
-            <div className='ticket-info'>
-                <h1>Techember Fest "25</h1>
-                <p>Join us for an unforgettable experience at</p>
-                <p>[Event Name]! Secure your spot now.</p>
-                <p className='date'> 📍[Event Location] || March 15, 2025 | 7:00PM</p>
-            </div>
-            <hr />
-            <div class="ticket-type">
-                <h3>Select Ticket Type:</h3>
-                <div class="ticket-options">
-                    <div class="ticket selected">
-                        <span class="ticket-type">REGULAR ACCESS</span>
-                        <span class="ticket-price free">Free</span>
-                        <span class="ticket-left">20 left!</span>
-                    </div>
-                    <div class="ticket">
-                        <span class="ticket-type">VIP ACCESS</span>
-                        <span class="ticket-price">$50</span>
-                        <span class="ticket-left">20 left!</span>
-                    </div>
-                    <div class="ticket">
-                        <span class="ticket-type">VVIP ACCESS</span>
-                        <span class="ticket-price">$150</span>
-                        <span class="ticket-left">20 left!</span>
-                    </div>
-                </div>
-            </div>
-            <div className='selection-container'>
-                <label for="tickets">Number of Tickets</label>
-                <select id="tickets" name="tickets">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <div className='decision-container'>
-                <button className='cancel'>Cancel</button>
-                <button className='next'>Next</button>
-            </div>
-        </div>
+        {page === 1 && <TicketSelection />}
+        {page === 2 && <Attendee />}
+        {page === 3 && <Ticket />}
     </section>
   )
 }
