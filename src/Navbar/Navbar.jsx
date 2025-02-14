@@ -1,9 +1,14 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Navbar.css'
 import logo from '../assets/logo.svg'
 import arrow from '../assets/arrow.svg'
 
 const Navbar = () => {
+    const navigate = useNavigate()
+
+    const handleNext = () => {
+        navigate('/tickets')
+    }
 
   return (
     <header>
@@ -18,7 +23,7 @@ const Navbar = () => {
             </ul>
         </nav>
         <div>
-            <button className='myticket-btn'>MY TICKETS <img src={arrow} alt='direction' className='arrow'/></button>
+            <button className='myticket-btn' onClick={handleNext}>MY TICKETS <img src={arrow} alt='direction' className='arrow'/></button>
         </div>
     </header>
   )

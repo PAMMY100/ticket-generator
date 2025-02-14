@@ -78,7 +78,7 @@ button .arrow {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 580px) {
     header {
         margin: 0;
         border-radius: 0;
@@ -94,10 +94,13 @@ button .arrow {
         font-weight: bold;
     }
 
-    /* header button {
-        font-size: 14px;
-        padding: 8px 12px;
-    } */
+    header button {
+        width: 70%;
+        padding: 9px;
+        font-size: 10px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
 
     .arrow {
         width: 15px;
