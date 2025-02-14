@@ -35,7 +35,7 @@ const Home = () => {
     <section className='ticket-container' style={{height: increase}}>
         <div className='title-box'>
             <h1 className='title'>{title}</h1>
-            <p className='step'>step {page}/3</p>
+            <p className='step' style={{fontSize: '30px'}}>step {page}/3</p>
         </div>
         <div className='progress-bar'>
             <div className='progress' style={{width: progress}}></div>
