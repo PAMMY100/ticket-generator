@@ -2,14 +2,18 @@ import { Link, useNavigate } from 'react-router-dom'
 import './Navbar.css'
 import logo from '../assets/logo.svg'
 import arrow from '../assets/arrow.svg'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { TicketContext } from '../context/TicketProvider'
 
 const Navbar = () => {
+    const {page} = useContext(TicketContext)
     const [active, setActive] = useState('event')
     const navigate = useNavigate()
 
+
     const handleNext = () => {
         navigate('/tickets')
+        setActive('ticket')
     }
 
   return (
