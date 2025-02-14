@@ -199,6 +199,10 @@ select:focus {
         padding: 8px;
     }
 
+    .ticket span {
+        font-size: 8px;
+    }
+
     .ticket-price {
         width: 70px;
         height: 30px;
@@ -261,10 +265,10 @@ select:focus {
         font-size: 10px;
     }
 
-    .ticket-left {
+    /* .ticket-left {
         margin-left: 5px;
         font-size: 10px;
-    }
+    } */
 
     .decision-container button {
         padding: 0px 2px;
