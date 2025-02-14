@@ -170,7 +170,7 @@ function Attendee() {
       </div>
       <div className='btn-con'>
         <button type='button' className='back' onClick={handlePrev}>Back</button>
-        <button className='get-btn' type='submit'>{submitting ? "Submitting..." : 'Get My Free Ticket'}</button>
+        <button className='get-btn' type='submit'>{submitting ? "Submitting..." : `Get My ${formData.ticketType} ticket`}</button>
       </div>
     </form>
   );
