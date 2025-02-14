@@ -3,11 +3,11 @@ import imgUpload from '../../assets/img-upload.svg';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { TicketContext } from '../../context/TicketProvider';
 
-const USER_REGEX = /^([\w]{3,})+\s+([\w\s]{3,})+$/i;
-const EMAIL_REGEX = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+const USER_REGEX = /^[A-Za-z]{2,}\s+[A-Za-z\s]{2,}$/;
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 function Attendee() {
-  const { page, setPage, formData, setFormData } = useContext(TicketContext);
+  const { page, setPage, formData, setFormData, addCompletedTicket } = useContext(TicketContext);
   const [error, setError] = useState("");
   const [emailErr, setEmailErr] = useState("");
   const [fullNameErr, setFullNameErr] = useState("");
@@ -15,40 +15,41 @@ function Attendee() {
   const [submitting, setSubmitting] = useState(false);
   const fullNameRef = useRef();
   const emailRef = useRef();
-  
+
   useEffect(() => {
-    const validName = USER_REGEX.test(formData.fullname);
-    if (!validName) {
-      setFullNameErr("First name and last name must have at least 2 letters");
+    if (formData.fullname) {
+      const validName = USER_REGEX.test(formData.fullname);
+      setFullNameErr(validName ? "" : "First name and last name must have at least 2 letters.");
     }
+
+    if (formData.email) {
+      const validEmail = EMAIL_REGEX.test(formData.email.trim());
+      setEmailErr(validEmail ? "" : "Enter a valid email.");
+    }
+
     setUploadErr("");
-    setFullNameErr("");
     setSubmitting(false);
-  }, [formData, formData.fullname, formData.email]);
+  }, [formData.fullname, formData.email]);
 
   const handleImageUpload = (file) => {
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        setError("File size exceeds 5mb. Please upload a smaller file.");
-        setSubmitting(false);
-        return;
-      }
-      if (!file) {
-        setSubmitting(false);
-        return;
-      }
-      setError("");
-      const reader = new FileReader();
-      reader.onload = () => {
-        const imageData = reader.result;
-        setFormData((prev) => ({
-          ...prev,
-          image: imageData
-        }));
-        localStorage.setItem("uploadedImage", imageData);
-      };
-      reader.readAsDataURL(file);
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      setError("File size exceeds 5MB. Please upload a smaller file.");
+      return;
     }
+
+    setError("");
+    const reader = new FileReader();
+    reader.onload = () => {
+      const imageData = reader.result;
+      setFormData((prev) => ({
+        ...prev,
+        image: imageData
+      }));
+      localStorage.setItem("uploadedImage", imageData);
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleChange = (event) => {
@@ -57,14 +58,14 @@ function Attendee() {
       ...prev,
       [name]: value
     }));
-    const validName = USER_REGEX.test(formData.fullname);
-    if (!validName) {
-      setFullNameErr("First name and last name must have at least 2 letters");
+
+    if (name === "fullname") {
+      setFullNameErr(USER_REGEX.test(value) ? "" : "First name and last name must have at least 2 letters.");
     }
-    const validEmail = EMAIL_REGEX.test(formData.email.trim());
-    if (!validEmail) setEmailErr("Enter a valid email");
-    setFullNameErr("");
-    setEmailErr("");
+
+    if (name === "email") {
+      setEmailErr(EMAIL_REGEX.test(value.trim()) ? "" : "Enter a valid email.");
+    }
   };
 
   const onDragOver = (event) => {
@@ -80,25 +81,26 @@ function Attendee() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitting(true);
-    if (formData.image?.length < 2) {
-      setUploadErr("Please upload a picture");
-    }
-    const validEmail = EMAIL_REGEX.test(formData.email.trim());
-    if (!validEmail) setEmailErr("Please enter a valid email");
 
-    if (fullNameErr === "" && emailErr === "" && formData.image?.length > 5) {
-      setPage(3);
-    } else {
-      if (fullNameErr !== "") {
-        fullNameRef.current.focus();
-      } else if (emailErr !== "") {
-        emailRef.current.focus();
-      } 
+    if (!formData.fullname || fullNameErr) {
+      fullNameRef.current.focus();
+      return;
+    }
+
+    if (!formData.email || emailErr) {
+      emailRef.current.focus();
+      return;
+    }
+
+    if (!formData.image) {
+      setUploadErr("Please upload a picture.");
+      return;
     }
 
     setUploadErr("");
     setEmailErr("");
     setSubmitting(false);
+    setPage(3);
   };
 
   const handlePrev = () => {
@@ -111,7 +113,9 @@ function Attendee() {
         <h1>Upload Profile Photo</h1>
         <div className='image-container'>
           <label htmlFor="fileUpload" className='upload-box' onDragOver={onDragOver} onDrop={onDrop}>
-            {formData.image ? <img src={formData.image} alt='uploaded' className='uploaded-image' /> : (
+            {formData.image ? (
+              <img src={formData.image} alt='uploaded' className='uploaded-image' />
+            ) : (
               <div className='upload-placeholder'>
                 <img src={imgUpload} alt="drop icon" />
                 <p>Drag & drop or click to upload</p>
@@ -135,11 +139,10 @@ function Attendee() {
             onChange={handleChange} 
             value={formData.fullname}
             required
-            aria-invalid={fullNameErr === "" ? "false" : "true"}
-            aria-describedby="fullnameNote"
+            aria-invalid={fullNameErr !== ""} 
             ref={fullNameRef}
           />
-          <small aria-live="assertive">{fullNameErr}</small>
+          <small className="error">{fullNameErr}</small>
         </div>
         <div className='email-con'>
           <label htmlFor="email">Enter your email</label>
@@ -153,7 +156,7 @@ function Attendee() {
             ref={emailRef}
             autoComplete="off"
           />
-          <small aria-live="assertive">{emailErr}</small>
+          <small className="error">{emailErr}</small>
         </div>
         <div className='about-con'>
           <label htmlFor="about">Request</label>
@@ -170,7 +173,7 @@ function Attendee() {
         <button className='get-btn' type='submit'>{submitting ? "Submitting..." : 'Get My Free Ticket'}</button>
       </div>
     </form>
-  )
+  );
 }
 
 export default Attendee;

@@ -1,5 +1,216 @@
 .form-container {
     width: 604px;
+    height: 920px;
+    background: #08252B;
+    padding: 24px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 24px;
+}
+
+.form-container hr {
+    width: 556px;
+    height: 4px;
+    background: #07373F;
+    border: none;
+}
+
+.upload-container {
+    width: 556px;
+    height: 344px;
+    background: #052228;
+    padding: 24px;
+    border-radius: 24px;
+    border: 1px solid #07373F;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.upload-container h1 {
+    font-size: 16px;
+    margin-top: 10px;
+    background: transparent;
+}
+
+.image-container {
+    width: 508px;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(#000, #0E464F, #FAFAFA);
+}
+
+.upload-box {
+    width: 240px;
+    height: 240px;
+    padding: 24px;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background: #0E464F;
+    cursor: pointer;
+}
+
+.upload-placeholder {
+    background: transparent;
+}
+
+.upload-placeholder img,
+.upload-placeholder p  {
+    background: transparent;
+}
+
+.file-input {
+    display: none;
+}
+
+.uploaded-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    background: transparent;
+}
+
+.input-area {
+    margin-top: 20px;
+    background: transparent;
+}
+
+.fullname,
+.email-con,
+.about-con {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 20px;
+    background: transparent;
+}
+
+.fullname label,
+.email-con label,
+.about-con label {
+    background: transparent;
+}
+
+.fullname input,
+.email-con input,
+.about-con textarea {
+    background: transparent;
+    width: 100%;
+    height: 48px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #07373F;
+    padding: 12px;
+    outline: none;
+    box-shadow: none;
+    font-size: 16px;
+}
+
+.fullname input:focus,
+.email-con input:focus,
+.about-con textarea:focus {
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  border: 2px solid #2096aa;
+}
+
+.about-con textarea {
+    height: 100px;
+}
+
+.btn-con {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+}
+
+.btn-con button {
+    width: 270px;
+    height: 48px;
+    padding: 24px 12px;
+    border-radius: 8px;
+    font-style: 16px;
+    cursor: pointer;
+}
+
+.back {
+    border-color: #24A0B5;
+    color: #24A0B5;
+    background: transparent;
+}
+
+.get-btn {
+    background: #24A0B5;
+    color: white;
+    border: none;
+}
+
+#uploadError {
+    margin-top: -35px;
+    color: rgb(255, 106, 106);
+    background: transparent;
+}
+
+.upload {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+small {
+    padding-left: 3px;
+    color: rgb(255, 106, 106);
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .form-container hr {
+        width: 100%;
+    }
+
+    .upload-container {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .image-container {
+        width: 100%;
+    }
+
+    .upload-box {
+        width: 200px;
+        height: 200px;
+    }
+
+    .btn-con button {
+        width: 48%;
+        padding: 16px;
+    }
+}
+
+.form-container {
+    width: 604px;
     height: 923px;
     background: #08252B;
     padding: 24px;
@@ -177,4 +388,69 @@
 small {
     padding-left: 3px;
     color: rgb(255, 106, 106);
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .form-container hr {
+        width: 100%;
+    }
+
+    .upload-container {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .image-container {
+        width: 100%;
+    }
+
+    .upload-box {
+        width: 200px;
+        height: 200px;
+    }
+
+    .btn-con button {
+        width: 48%;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .form-container hr {
+        width: 100%;
+    }
+
+    .upload-container {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .image-container {
+        width: 100%;
+    }
+
+    .upload-box {
+        width: 150px;
+        height: 150px;
+    }
+
+    .btn-con {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-con button {
+        width: 100%;
+        padding: 10px; 
+    }
 }

@@ -1,6 +1,7 @@
 header {
     height: 76px;
-    width: 1200px;
+    width: 100%;
+    max-width: 1200px;
     background: transparent;
     padding: 16px 12px;
     margin: 20px auto;
@@ -10,20 +11,29 @@ header {
     align-items: center;
     justify-content: space-between;
     border: 1px solid #197686;
+    z-index: 20;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 nav ul {
     display: flex;
     flex-direction: row;
     gap: 20px;    
+    background: transparent;
 }
+
 a {
     text-decoration: none;
+    background: transparent;
 }
 
 li {
     list-style: none;
     color: #B3B3B3;
+    
 }
 
 header button {
@@ -38,4 +48,41 @@ header button {
 
 button .arrow {
     background: transparent;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 16px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    header button {
+        width: 100%;
+        padding: 10px 16px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        margin: 0;
+        border-radius: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    header button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
 }

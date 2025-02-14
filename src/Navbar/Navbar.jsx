@@ -12,9 +12,9 @@ const Navbar = () => {
         </div>
         <nav>
             <ul>
-                <li><Link>Events</Link></li>
-                <li><Link>My Tickets</Link></li>
-                <li><Link>About Project</Link></li>
+                <li><Link to='/'>Events</Link></li>
+                <li><Link to='/tickets'>My Tickets</Link></li>
+                <li><Link to='/about'>About Project</Link></li>
             </ul>
         </nav>
         <div>

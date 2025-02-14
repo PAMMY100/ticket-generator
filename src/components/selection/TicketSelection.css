@@ -1,7 +1,7 @@
 .info-container {
     width: 100%;
     max-width: 604px;
-    height: 726px;
+    height: auto;
     background: #08252B;
     padding: 24px;
     display: flex;
@@ -13,7 +13,7 @@
 
 .ticket-info {
     width: 100%;
-    height: 200px;
+    height: auto;
     text-align: center;
     padding: 24px;
     margin-bottom: 10px;
@@ -47,7 +47,7 @@
 
 .ticket-type {
     width: 100%;
-    height: 292px;
+    height: auto;
     background: transparent;
 }
 
@@ -58,7 +58,7 @@
 
 .ticket-options {
     width: 100%;
-    height: 186px;
+    height: auto;
     padding: 16px;
     display: flex;
     flex-wrap: wrap;
@@ -84,29 +84,6 @@
     color: white;
 }
 
-.ticket-options {
-    width: fill;
-    height: 186px;
-    padding: 16px;
-    border: 24px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.ticket{
-    width: 222px;
-    height: 65px;
-    padding: 10px;
-    margin-right: 20px;
-    cursor: pointer;
-    border: 2px solid #07373F;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-    /* position: relative; */
-}
-
 .ticket:hover {
     background-color: #12464E;
     color: white;
@@ -126,7 +103,6 @@
     text-align: left;
     font-size: 13px;
     margin-right: 10px;
-    
 }
 
 .ticket-left {
@@ -144,7 +120,8 @@
 }
 
 .selection-container {
-    width: 556px;
+    width: 100%;
+    max-width: 556px;
     height: 48px;
     background: transparent;
 }
@@ -153,7 +130,6 @@
     display: block;
     background: transparent;
     margin-bottom: 10px;
-
 }
 
 select {
@@ -165,21 +141,20 @@ select {
     padding: 12px;
     outline: none;
     box-shadow: none;
-    margin-bottom: 10px;
 }
 
 select:focus {
     outline: none;
     box-shadow: none;
-    border-color: inherit; /* Keeps the border color unchanged */
+    border-color: inherit;
 }
 
 .decision-container {
-    margin: 20px;
-    width: 556px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 556px;
     height: 48px;
     background: #041E23;
-    margin-left: 0px;
     display: flex;
     justify-content: space-between;
     padding: 0 48px;
@@ -187,7 +162,8 @@ select:focus {
 }
 
 .decision-container button {
-    width: 214px;
+    width: 100%;
+    max-width: 214px;
     height: 48px;
     padding: 20px 12px;
     border-radius: 8px;
@@ -205,5 +181,90 @@ select:focus {
     color: white;
 }
 
+@media (max-width: 768px) {
+    .info-container {
+        padding: 16px;
+    }
 
+    .ticket-info h1 {
+        font-size: 36px;
+    }
 
+    .ticket-info p {
+        font-size: 14px;
+    }
+
+    .ticket {
+        max-width: 180px;
+        height: 55px;
+        padding: 8px;
+    }
+
+    .ticket-price {
+        width: 70px;
+        height: 30px;
+        padding: 6px;
+    }
+
+    .ticket-type {
+        font-size: 12px;
+    }
+
+    .ticket-left {
+        margin-left: 10px;
+        font-size: 12px;
+    }
+
+    .decision-container {
+        padding: 0 24px;
+    }
+
+    .decision-container button {
+        max-width: 180px;
+        padding: 16px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-container {
+        padding: 12px;
+    }
+
+    .ticket-info h1 {
+        font-size: 28px;
+    }
+
+    .ticket-info p {
+        font-size: 12px;
+    }
+
+    .ticket {
+        max-width: 140px;
+        height: 45px;
+        padding: 6px;
+    }
+
+    .ticket-price {
+        width: 60px;
+        height: 25px;
+        padding: 4px;
+    }
+
+    .ticket-type {
+        font-size: 10px;
+    }
+
+    .ticket-left {
+        margin-left: 5px;
+        font-size: 10px;
+    }
+
+    .decision-container {
+        padding: 0 12px;
+    }
+
+    .decision-container button {
+        max-width: 140px;
+        padding: 12px 6px;
+    }
+}
