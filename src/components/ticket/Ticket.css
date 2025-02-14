@@ -118,6 +118,21 @@
     background: #24A0B5;
     color: white;
 }
+
+.btn_sec:hover {
+    background-color: #24A0B5;
+    color: #041E23;
+    border-color: #041E23;
+    transition: background .3s ease-in-out;
+}
+
+.btn_primary:hover {
+    border-color: #24A0B5;
+    color: #24A0B5;
+    background: transparent;
+    transition: background .3s ease-in-out;
+}
+
   
   /* Responsive Styles */
   @media (max-width: 480px) {

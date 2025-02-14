@@ -180,6 +180,20 @@ select:focus {
     color: white;
 }
 
+.cancel:hover {
+    background-color: #24A0B5;
+    color: #041E23;
+    border-color: #041E23;
+    transition: background .3s ease-in-out;
+}
+
+.next:hover {
+    border-color: #24A0B5;
+    color: #24A0B5;
+    background: transparent;
+    transition: background .3s ease-in-out;
+}
+
 @media only screen and (max-width: 768px) {
     .info-container {
         padding: 16px;
