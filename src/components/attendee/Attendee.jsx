@@ -12,7 +12,7 @@ function Attendee() {
   const [emailErr, setEmailErr] = useState("");
   const [fullNameErr, setFullNameErr] = useState("");
   const [uploadErr, setUploadErr] = useState("");
-  const [submitting, setSubmitting] = useState(false)
+  const [submitting, setSubmitting] = useState(false);
   const fullNameRef = useRef();
   const emailRef = useRef();
   
@@ -23,20 +23,20 @@ function Attendee() {
     }
     setUploadErr("");
     setFullNameErr("");
-    setSubmitting(false)
+    setSubmitting(false);
   }, [formData, formData.fullname, formData.email]);
 
   const handleImageUpload = (file) => {
     if (file) {
       if (file.size > 5 * 1024 * 1024) {
         setError("File size exceeds 5mb. Please upload a smaller file.");
-        setSubmitting(false)
+        setSubmitting(false);
         return;
       }
-    if (!file) {
-      setSubmitting(false)
-      return;
-    }
+      if (!file) {
+        setSubmitting(false);
+        return;
+      }
       setError("");
       const reader = new FileReader();
       reader.onload = () => {
@@ -79,6 +79,7 @@ function Attendee() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSubmitting(true);
     if (formData.image?.length < 2) {
       setUploadErr("Please upload a picture");
     }
@@ -97,12 +98,12 @@ function Attendee() {
 
     setUploadErr("");
     setEmailErr("");
-    setSubmitting(true)
+    setSubmitting(false);
   };
 
-  function handlePrev() {
+  const handlePrev = () => {
     setPage(1);
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="form-container">
@@ -166,7 +167,7 @@ function Attendee() {
       </div>
       <div className='btn-con'>
         <button type='button' className='back' onClick={handlePrev}>Back</button>
-        <button className='get-btn' type='submit'>{submitting ? "submitting....." : 'Get My Free Ticket'}</button>
+        <button className='get-btn' type='submit'>{submitting ? "Submitting..." : 'Get My Free Ticket'}</button>
       </div>
     </form>
   )

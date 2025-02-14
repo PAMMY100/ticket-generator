@@ -82,7 +82,7 @@
     color: red;
     margin-top: 10px;
     font-size: 14px;
-  }
+}
 
 .input-area {
     margin-top: 20px;
@@ -167,14 +167,14 @@
     margin-top: -35px;
     color: rgb(255, 106, 106);
     background: transparent;
-  }
+}
 
 .upload {
     position: relative;
     margin-bottom: 40px;
-  }
+}
 
 small {
     padding-left: 3px;
     color: rgb(255, 106, 106);
-  }
+}
