@@ -18,15 +18,11 @@ function Attendee() {
 
   useEffect(() => {
     if (formData.fullname) {
-      const validName = USER_REGEX.test(formData.fullname);
-      setFullNameErr(validName ? "" : "First name and last name must have at least 2 letters.");
+      setFullNameErr(USER_REGEX.test(formData.fullname) ? "" : "First name and last name must have at least 2 letters.");
     }
-
     if (formData.email) {
-      const validEmail = EMAIL_REGEX.test(formData.email.trim());
-      setEmailErr(validEmail ? "" : "Enter a valid email.");
+      setEmailErr(EMAIL_REGEX.test(formData.email.trim()) ? "" : "Enter a valid email.");
     }
-
     setUploadErr("");
     setSubmitting(false);
   }, [formData.fullname, formData.email]);
@@ -35,11 +31,11 @@ function Attendee() {
     if (!file) return;
 
     if (file.size > 5 * 1024 * 1024) {
-      setError("File size exceeds 5MB. Please upload a smaller file.");
+      setUploadErr("File size exceeds 5MB. Please upload a smaller file.");
       return;
     }
 
-    setError("");
+    setUploadErr(""); // Clear error if valid image
     const reader = new FileReader();
     reader.onload = () => {
       const imageData = reader.result;
@@ -62,7 +58,6 @@ function Attendee() {
     if (name === "fullname") {
       setFullNameErr(USER_REGEX.test(value) ? "" : "First name and last name must have at least 2 letters.");
     }
-
     if (name === "email") {
       setEmailErr(EMAIL_REGEX.test(value.trim()) ? "" : "Enter a valid email.");
     }
@@ -86,12 +81,10 @@ function Attendee() {
       fullNameRef.current.focus();
       return;
     }
-
     if (!formData.email || emailErr) {
       emailRef.current.focus();
       return;
     }
-
     if (!formData.image) {
       setUploadErr("Please upload a picture.");
       return;
@@ -101,7 +94,7 @@ function Attendee() {
     setEmailErr("");
     setSubmitting(false);
     setPage(3);
-    addCompletedTicket(formData)
+    addCompletedTicket(formData);
   };
 
   const handlePrev = () => {
@@ -120,11 +113,13 @@ function Attendee() {
               <div className='upload-placeholder'>
                 <img src={imgUpload} alt="drop icon" />
                 <p>Drag & drop or click to upload</p>
+                {uploadErr && <p style={{color: 'red', background: 'transparent'}}>{uploadErr}</p>}
               </div>
             )}
           </label>
-          <input type="file" id="fileUpload" accept="image/*" className='file-input' onChange={(e) => handleImageUpload(e.target.files[0])} />
-          {error && <p className='error-message'>{error}</p>}
+          <input type="file" id="fileUpload" accept="image/*" className='file-input' 
+            onChange={(e) => handleImageUpload(e.target.files[0])} />
+          {uploadErr && <p className='error-message'>{uploadErr}</p>}
         </div>
         <p id="uploadError">
           <small aria-live="assertive">{uploadErr}</small>
@@ -164,7 +159,7 @@ function Attendee() {
           <textarea 
             name="request" 
             id="about" 
-            onChange={(e) => setFormData((prev) => ({ ...prev, request: e.target.value }))}
+            onChange={(e) => setFormData((prev) => ({ ...prev, request: e.target.value }))} 
             value={formData.request}
           />
         </div>
