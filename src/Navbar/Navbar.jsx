@@ -2,8 +2,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import './Navbar.css'
 import logo from '../assets/logo.svg'
 import arrow from '../assets/arrow.svg'
+import { useState } from 'react'
 
 const Navbar = () => {
+    const [active, setActive] = useState('event')
     const navigate = useNavigate()
 
     const handleNext = () => {
@@ -17,9 +19,9 @@ const Navbar = () => {
         </div>
         <nav>
             <ul>
-                <li><Link to='/'>Events</Link></li>
-                <li><Link to='/tickets'>My Tickets</Link></li>
-                <li><Link to='/about'>About Project</Link></li>
+                <li ><Link to='/' className={active === 'event' ? 'isActive' : ''} onClick={() => setActive('event')}>Events</Link></li>
+                <li><Link to='/tickets' className={active === 'ticket' ? 'isActive' : ''} onClick={() => setActive('ticket')}>My Tickets</Link></li>
+                <li><Link to='/about' className={active === 'about' ? 'isActive' : ''} onClick={() => setActive('about')}>About Project</Link></li>
             </ul>
         </nav>
         <div>

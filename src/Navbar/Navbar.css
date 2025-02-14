@@ -32,7 +32,10 @@ a {
 a:hover {
     color: #3eb0ef;
     transform: scale(1.1);
+}
 
+.isActive {
+    color: #3eb0ef;
 }
 
 li {
