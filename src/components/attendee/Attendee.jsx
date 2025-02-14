@@ -101,6 +101,7 @@ function Attendee() {
     setEmailErr("");
     setSubmitting(false);
     setPage(3);
+    addCompletedTicket(formData)
   };
 
   const handlePrev = () => {
