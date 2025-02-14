@@ -225,7 +225,7 @@ select:focus {
     }
 }
 
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 500px) {
     .info-container {
         padding: 12px;
     }
@@ -242,6 +242,13 @@ select:focus {
         max-width: 140px;
         height: 45px;
         padding: 6px;
+    }
+
+    .ticket-options {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .ticket-price {
