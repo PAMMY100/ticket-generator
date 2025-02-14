@@ -219,9 +219,11 @@ select:focus {
         padding: 0 24px;
     }
 
-    .decision-container button {
-        max-width: 180px;
-        padding: 16px 8px;
+    .cancel,
+    .next {
+        max-width: 150px;
+        height: 100%;
+        padding: 1px 8px;
     }
 }
 
@@ -260,11 +262,13 @@ select:focus {
     }
 
     .decision-container {
-        padding: 0 12px;
+        padding: 0 10px;
     }
 
-    .decision-container button {
-        max-width: 140px;
-        padding: 12px 6px;
+    .cancel,
+    .next {
+        max-width: 180px;
+        height: 100%;
+        padding: 1px 8px;
     }
 }
