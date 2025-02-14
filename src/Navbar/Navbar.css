@@ -51,7 +51,7 @@ button .arrow {
 @media (max-width: 768px) {
     header {
         height: auto;
-        padding: 16px;
+        padding: 10px;
     }
 
     nav ul {
@@ -63,6 +63,11 @@ button .arrow {
 
     .logo {
         height: 20px;
+    }
+
+    header a {
+        font-size: 12px;
+        font-weight: bold;
     }
 
     header button {
@@ -86,12 +91,13 @@ button .arrow {
 
     ul li {
         font-size: 10px;
+        font-weight: bold;
     }
 
-    header button {
+    /* header button {
         font-size: 14px;
         padding: 8px 12px;
-    }
+    } */
 
     .arrow {
         width: 15px;
