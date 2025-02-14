@@ -1,22 +1,22 @@
 .info-container {
-    width: 604px;
-    height: 923px;
+    width: 100%;
+    max-width: 604px;
+    height: 726px;
     background: #08252B;
     padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin: 0 auto;
+    border-radius: 10px;
 }
 
 .ticket-info {
-    width: 556px;
+    width: 100%;
     height: 200px;
-    /* display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center; */
     text-align: center;
     padding: 24px;
+    margin-bottom: 10px;
     border-radius: 24px;
     background: linear-gradient(45deg, #07373F, #071e26);
 }
@@ -38,146 +38,172 @@
 }
 
 .info-container hr {
-    width: 556px;
+    width: 100%;
     height: 4px;
     background: #07373F;
     border: none;
+    margin-bottom: 10px;
 }
 
-.ticket_type_card {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-color: #052228;
-    border: 1px solid #07373f;
+.ticket-type {
+    width: 100%;
+    height: 292px;
+    background: transparent;
+}
+
+.ticket-type h3 {
+    margin-bottom: 10px;
+    background: transparent;
+}
+
+.ticket-options {
+    width: 100%;
+    height: 186px;
     padding: 16px;
-    border-radius: 24px;
-    gap: 24px;
-  }
-  
-  .ticket_type_card p {
-    font-family: "Roboto";
-    font-size: 16px;
-    margin-top: 8px;
-  }
-  
-  .access_card {
     display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    /* width: 242px; */
-    border: 2px solid #197686;
-    border-radius: 12px;
-    padding: 8px;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.ticket {
     width: 100%;
-  }
-  
-  .selection_card {
+    max-width: 222px;
+    height: 65px;
+    padding: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 2px solid #07373F;
+    border-radius: 12px;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.ticket.selected {
+    background-color: #12464E;
+    color: white;
+}
+
+.ticket-options {
+    width: fill;
+    height: 186px;
+    padding: 16px;
+    border: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ticket{
+    width: 222px;
+    height: 65px;
+    padding: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+    border: 2px solid #07373F;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
     /* position: relative; */
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .selection_card input {
-    display: none;
-  }
-  
-  .access_price {
-    font-family: "Roboto";
-    font-size: 24px;
-    font-weight: 600;
-    display: flex;
-    justify-content: flex-start;
-    width: 70px;
-  
+}
+
+.ticket:hover {
+    background-color: #12464E;
+    color: white;
+}
+
+.ticket-price {
+    width: 80px;
+    height: 38px;
     padding: 8px;
-  }
-  
-  .access_wrap {
-    display: flex;
-    flex-direction: column;
-    padding-left: 12px;
-    pointer-events: none;
-    /* background-color: red; */
+    text-align: right;
+    background-color: #0E464F;
+    border-radius: 8px;
+}
+
+.ticket-type {
+    font-weight: bold;
+    text-align: left;
+    font-size: 13px;
+    margin-right: 10px;
+    
+}
+
+.ticket-left {
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 20px;
+    display: block;
+    background: transparent;
+}
+
+.free {
+    background: #0E464F;
+    color: white;
+    border: #2BA4B9;
+}
+
+.selection-container {
+    width: 556px;
+    height: 48px;
+    background: transparent;
+}
+
+.selection-container label {
+    display: block;
+    background: transparent;
+    margin-bottom: 10px;
+
+}
+
+select {
     width: 100%;
-  }
-  
-  .access_wrap p {
-    padding: 0px;
-  }
-  
-  .ticket_type {
-    color: #fafafa;
-    font-weight: 200;
-  }
-  
-  select {
-    width: 100%;
-    padding: 16px 20px;
-    border: 1px solid #07373f;
+    height: 48px;
     border-radius: 12px;
-    background-color: #08252b;
-    color: #fff;
+    margin-bottom: 10px;
+    border: 1px solid #07373F;
+    padding: 12px;
     outline: none;
-    cursor: pointer;
-  }
-  
-  select {
-    overflow-x: hidden !important;
-  }
-  
-  .select_div {
-    position: relative;
-    overflow-x: hidden;
-  }
-  
-  .space_up {
-    margin-top: 32px;
-  }
-  
-  .btn_wrap {
+    box-shadow: none;
+    margin-bottom: 10px;
+}
+
+select:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: inherit; /* Keeps the border color unchanged */
+}
+
+.decision-container {
+    margin: 20px;
+    width: 556px;
+    height: 48px;
+    background: #041E23;
+    margin-left: 0px;
     display: flex;
-    justify-content: center;
-    gap: 32px;
-  }
-  
-  .btn_primary {
-    padding: 12px 12px;
+    justify-content: space-between;
+    padding: 0 48px;
+    border-radius: 24px;
+}
+
+.decision-container button {
+    width: 214px;
+    height: 48px;
+    padding: 20px 12px;
     border-radius: 8px;
-    background-color: #24a0b5;
-    color: #fff;
-    outline: none;
-    border: none;
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
     cursor: pointer;
-    transition: all ease cubic-bezier(0.39, 0.575, 0.565, 4);
-  }
-  
-  .btn_primary:hover,
-  .btn_sec:hover {
-    background-color: #00404b;
-    border: 1px solid #24a0b5;
-  }
-  
-  .btn_sec {
-    padding: 12px 12px;
-    border-radius: 8px;
-    background-color: transparent;
-    color: #fff;
-    outline: none;
-    border: 1px solid #24a0b5;
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    cursor: pointer;
-  }
+}
+
+.cancel {
+    border-color: #24A0B5;
+    color: #24A0B5;
+    background: transparent;
+}
+
+.next {
+    background: #24A0B5;
+    color: white;
+}
+
+
+

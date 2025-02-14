@@ -1,13 +1,11 @@
 import { createContext, useEffect, useState } from "react"
 
 
-export const TickectContext = createContext()
+export const TicketContext = createContext()
 
-const allData = () => {
+function allData(){
   const storedData = localStorage.getItem("data");
-  if (!storedData) {
-    return {page: "1", numberOfTicket: "1", ticketType: "REGULAR", email: "", fullname: "", request: "", image: ""}
-  }
+  if (!storedData)  return {page: "1", numberOfTicket: "1", ticketType: "REGULAR", email: "", fullname: "", request: "", image: ""}
   return JSON.parse(storedData)
 }
 
@@ -28,9 +26,9 @@ const TicketProvider = ({children}) => {
   // }
 
   return (
-    <TickectContext.Provider value={{page, setPage, formData, setFormData}}>
+    <TicketContext.Provider value={{page, setPage, formData, setFormData}}>
         {children}
-    </TickectContext.Provider>
+    </TicketContext.Provider>
   )
 }
 

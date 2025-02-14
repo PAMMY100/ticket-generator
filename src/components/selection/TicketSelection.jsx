@@ -1,151 +1,72 @@
-import { useContext } from 'react'
-import './TicketSelection.css'
-import TicketProvider from '../../context/TicketProvider'
+import { useContext, useState } from 'react';
+import './TicketSelection.css';
+import { TicketContext } from '../../context/TicketProvider';
 
 const TicketSelection = () => {
-    const {page, setPage, formData, setFormData} = useContext(TicketProvider);
-    
-    const [selected, setSelected] = useState(formData.ticketType)
+  const { page, setPage, formData, setFormData } = useContext(TicketContext);
+  const [selected, setSelected] = useState(formData.ticketType);
 
-    const handleSelectedCard = (event) => {
-        const {name, value} = event.target
-        selected(value)
-        setFormData((prev) => ({...prev, [name]: value}))
-        setSelected(value)
-    }
+  const handleSelectedCard = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setSelected(value);
+  };
 
-    const handleTicketNum = (event) => {
-        const {name, value} = event.target
-        setFormData((prev) => {
-            return {...prev, [name]: value}
-        })
-    }
+  const handleTicketNum = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
 
-    const handleNext = () => {
-        setPage(2)
-    }
-
+  const handleNext = () => {
+    setPage(2);
+  };
 
   return (
     <div className='info-container'>
-        <div className='ticket-info'>
-            <h1>Techember Fest "25</h1>
-            <p>Join us for an unforgettable experience at</p>
-            <p>[Event Name]! Secure your spot now.</p>
-            <p className='date'> 📍[Event Location] || March 15, 2025 | 7:00PM</p>
-        </div>
-        <hr />
-        <section>
-        <p>Select Ticket Type:</p>
-
-        <div className="ticket_type_card">
-          <div
-            className={`access_card selection_card ${
-              selected === "REGULAR" ? "selected" : "access_card"
-            }`}
-            style={
-              selected === "REGULAR"
-                ? { backgroundColor: "#12464E" }
-                : { backgroundColor: "transparent" }
-            }
-          >
-            <label className="custom-radio">
-              <input
-                type="radio"
-                name="ticket_type"
-                value="REGULAR"
-                checked={selected === "REGULAR"}
-                onChange={handleSelectedCard}
-              />
-              <div className="access_wrap">
-                <p className="access_price">Free</p>
-                <p className="ticket_type">REGULAR ACCESS</p>
-                <span className="ticket_type">20/52</span>
-              </div>
-            </label>
+      <div className='ticket-info'>
+        <h1>Techember Fest "25</h1>
+        <p>Join us for an unforgettable experience at</p>
+        <p>[Event Name]! Secure your spot now.</p>
+        <p className='date'> 📍[Event Location] || March 15, 2025 | 7:00PM</p>
+      </div>
+      <hr />
+      <div className="ticket-type">
+        <h3>Select Ticket Type:</h3>
+        <div className="ticket-options">
+          <div className={`ticket ${selected === 'REGULAR' ? 'selected' : ''}`} onClick={() => handleSelectedCard({ target: { name: 'ticketType', value: 'REGULAR' } })} style={selected === "REGULAR" ? { backgroundColor: "#12464E" } : { backgroundColor: "transparent" }}>
+            <span style={{textAlign: 'left', marginLeft: '0px', marginRight: '10px', background: 'transparent'}}>REGULAR ACCESS</span>
+            <span className={`ticket-price ${selected === 'REGULAR' ? 'free' : ''}`}>Free</span>
+            <span className="ticket-left">20 left!</span>
           </div>
-          <div
-            className={`access_card selection_card ${
-              selected === "VIP" ? "selected" : "access_card "
-            }`}
-            style={
-              selected === "VIP"
-                ? { backgroundColor: "#12464E" }
-                : { backgroundColor: "transparent" }
-            }
-          >
-            <label className="custom-radio">
-              <input
-                type="radio"
-                name="ticket_type"
-                checked={selected === "VIP"}
-                onChange={handleSelectedCard}
-                value="VIP"
-              />
-              <div className="access_wrap">
-                <p className="access_price">$50</p>
-                <p className="ticket_type">VIP ACCESS</p>
-                <span className="ticket_type"> 20/52</span>
-              </div>
-            </label>
+          <div className={`ticket ${selected === 'VIP' ? 'selected' : ''}`} onClick={() => handleSelectedCard({ target: { name: 'ticketType', value: 'VIP' } })} style={selected === "VIP" ? { backgroundColor: "#12464E" } : { backgroundColor: "transparent" }}>
+            <span style={{textAlign: 'left', marginLeft: '0px', marginRight: '50px', background: 'transparent'}}>VIP ACCESS</span>
+            <span className="ticket-price">$50</span>
+            <span className="ticket-left">20 left!</span>
           </div>
-          <div
-            className={`access_card selection_card ${
-              selected === "VVIP" ? "selected" : "access_card"
-            }`}
-            style={
-              selected === "VVIP"
-                ? { backgroundColor: "#12464E" }
-                : { backgroundColor: "transparent" }
-            }
-          >
-            <label className="custom-radio">
-              <input
-                type="radio"
-                name="ticket_type"
-                value="VVIP"
-                checked={selected === "VVIP"}
-                onChange={handleSelectedCard}
-              />
-
-              <div className="access_wrap">
-                <p className="access_price">$150</p>
-                <p className="ticket_type">VVIP ACCESS</p>
-                <span className="ticket_type">20/52</span>
-              </div>
-            </label>
+          <div className={`ticket ${selected === 'VVIP' ? 'selected' : ''}`} onClick={() => handleSelectedCard({ target: { name: 'ticketType', value: 'VVIP' } })} style={selected === "VVIP" ? { backgroundColor: "#12464E" } : { backgroundColor: "transparent" }}>
+            <span style={{textAlign: 'left', marginLeft: '0px', marginRight: '30px', background: 'transparent'}}>VVIP ACCESS</span>
+            <span className="ticket-price">$150</span>
+            <span className="ticket-left">20 left!</span>
           </div>
         </div>
-
-        <div className="space_up">
-          <label htmlFor="regular">Number of Tickets:</label>
-          <br />
-          <br />
-          <form>
-            <div className="select_div" onChange={handleTicketNum}>
-              <select
-                id="number_of_ticket"
-                name="number_of_ticket"
-                defaultValue={formData.numberOfTicket}
-              >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </div>
-          </form>
-        </div>
-
-        <div className="space_up btn_wrap">
-          <button className="btn_sec">Cancel</button>
-          <button className="btn_primary" onClick={handleNext}>
-            Next
-          </button>
-        </div>
-      </section>
+      </div>
+      <div className='selection-container'>
+        <label htmlFor="number_of_ticket">Number of Tickets</label>
+        <select id="number_of_ticket" name="numberOfTicket" defaultValue={formData.numberOfTicket} onChange={handleTicketNum}>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+      <div className='decision-container'>
+        <button className='cancel'>Cancel</button>
+        <button className='next' onClick={handleNext}>Next</button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default TicketSelection
+export default TicketSelection;

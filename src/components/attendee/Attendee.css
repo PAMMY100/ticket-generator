@@ -1,4 +1,4 @@
-.info-container {
+.form-container {
     width: 604px;
     height: 923px;
     background: #08252B;
@@ -10,7 +10,7 @@
     border-radius: 24px;
 }
 
-.info-container hr {
+.form-container hr {
     width: 556px;
     height: 4px;
     background: #07373F;
@@ -120,8 +120,17 @@
     font-size: 16px;
 }
 
+.fullname input:focus,
+.email-con input:focus,
+.about-con textarea:focus {
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  border: 2px solid #2096aa;
+}
+
 .about-con textarea {
-    height: 127px;
+    height: 100px;
 }
 
 .btn-con {
@@ -139,6 +148,7 @@
     padding: 24px 12px;
     border-radius: 8px;
     font-style: 16px;
+    cursor: pointer;
 }
 
 .back {
@@ -152,3 +162,19 @@
     color: white;
     border: none;
 }
+
+#uploadError {
+    margin-top: -35px;
+    color: rgb(255, 106, 106);
+    background: transparent;
+  }
+
+.upload {
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+small {
+    padding-left: 3px;
+    color: rgb(255, 106, 106);
+  }

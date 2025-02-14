@@ -1,6 +1,6 @@
 .ticket-container {
     width: 700px;
-    height: 1099px;
+    height: 902px;
     padding: 48px;
     border-radius: 40px;
     background-color: #041E23;
@@ -8,6 +8,10 @@
     flex-direction: column;
     margin: 0 auto;
     gap: 10px;
+}
+
+.grow {
+ height: 1099px;
 }
 
 .title-box {
