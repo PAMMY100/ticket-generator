@@ -13,7 +13,7 @@ const TicketGenerator = () => {
     <div className="container">
       <div className="card">
         <div className="header">
-          <h1>Welcome to the Ultimate</h1>
+          <h1>Welcome To The</h1>
           <h1>Ticket Generator App</h1>
         </div>
         <p className="description">
