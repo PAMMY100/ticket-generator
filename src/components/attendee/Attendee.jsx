@@ -95,6 +95,7 @@ function Attendee() {
     setSubmitting(false);
     setPage(3);
     addCompletedTicket(formData);
+    console.log(formData)
   };
 
   const handlePrev = () => {
