@@ -20,9 +20,9 @@ const CompletedTickets = () => {
           {tickets.map((ticket, index) => (
             <div key={index} className="ticket-card">
               <h3 className="ticket-name">{ticket.fullname}</h3>
-              <p><strong>Email:</strong> {ticket.email}</p>
-              <p><strong>Ticket Type:</strong> {ticket.ticketType}</p>
-              <p><strong>Request:</strong> {ticket.request}</p>
+              <p><span style={{background: 'transparent'}}>Email:</span> {ticket.email}</p>
+              <p><span style={{background: 'transparent'}}>Ticket Type:</span> {ticket.ticketType}</p>
+              <p><span style={{background: 'transparent'}}>Request:</span> {ticket.request}</p>
               {ticket.image && (
                 <img src={ticket.image} alt="Uploaded" className="ticket-image" />
               )}

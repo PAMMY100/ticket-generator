@@ -3,29 +3,31 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: transparent;
+    background-color: #0E464F;
     min-height: 100vh;
     margin-top: 50%;
+    border-radius: 24px;
   }
   
   .title {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: white;
     margin-bottom: 20px;
   }
   
   .no-tickets {
-    color: #666;
+    color: white;
     font-size: 16px;
   }
   
   .tickets-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 20px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 556px;
+    background: transparent;
   }
   
   .ticket-card {
@@ -33,25 +35,29 @@
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
+    border: 1px solid #24A0B5;
   }
   
   .ticket-name {
     font-size: 18px;
     font-weight: bold;
-    color: #444;
+    color: white;
+    background: transparent;
   }
   
   .ticket-card p {
-    color: #555;
+    color: white;
     font-size: 14px;
     margin: 5px 0;
+    background: transparent;
   }
   
   .ticket-image {
-    width: 100%;
-    height: auto;
+    width: 356px;
+    height: 100px;
+    object-fit: contain;
     margin-top: 10px;
     border-radius: 5px;
+    background: transparent
   }
   
